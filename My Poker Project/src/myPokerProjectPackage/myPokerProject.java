@@ -53,18 +53,17 @@ public class myPokerProject {
 		}
 		Arrays.sort(myValues);
 		
-		
 		// Check for Pair, Two Pair, Three of a Kind, Full House, Four of a Kind
 		int pairValue1 = 13, pairValue2 = 13;
 		for(int i=0; i<4; i++) {
 			if(myValues[i] == myValues[i+1]) {
 				if(!myCheck[0]) {
 					myCheck[0] = true;
-					pairValue1 = i;
+					pairValue1 = myValues[i];
 				} else {
 					if(myValues[i]!=pairValue1) {
 						myCheck[1] = true;
-						pairValue2 = i;
+						pairValue2 = myValues[i];
 					}
 					else if((myValues[i]==pairValue1)||(myValues[i]==pairValue2)) {
 						if(!myCheck[2]) myCheck[2] = true;
