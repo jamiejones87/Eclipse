@@ -1,6 +1,7 @@
 package myPokerProjectPackage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class myPokerProject {
 		}
 		
 		printHand(myHand);
+		boolean[] myStraightFlushCheck = checkStraightFlush(myHand);
+		System.out.println(Arrays.toString(myStraightFlushCheck));
 
 	}
 	
@@ -32,6 +35,24 @@ public class myPokerProject {
 			mySuit = (int) Math.floor(myHand.get(i)/13);
 			System.out.println(myValueArray[myValue] + " of " + mySuitArray[mySuit]);
 		}
+	}
+	
+	public static boolean[] checkStraightFlush(List<Integer> myHand) {
+		int[] checkStraight = new int[5], checkFlush = new int[5];
+		for(int i=0; i<5; i++) {
+			checkStraight[i] = myHand.get(i) % 13;
+			checkFlush[i] = (int) Math.floor(myHand.get(i)/13);
+		}
+		Arrays.sort(checkStraight);
+		int countStraight = 0, countFlush = 0;
+		for(int i=0; i<4; i++) {
+			if(checkStraight[i]+1 == checkStraight[i+1]) countStraight++;
+			if(checkFlush[i] == checkFlush[i+1]) countFlush++;
+		}
+		boolean[] myReturn = new boolean[2];
+		if(countStraight == 4) myReturn[0] = true;
+		if(countFlush == 4) myReturn[1] = true;
+		return(myReturn);
 	}
 
 }
