@@ -21,7 +21,7 @@ public class myPokerProject {
 			myDeck.remove(0);
 		}
 		
-		// Print cards in hand, and result
+		// Print cards in hand and result
 		printHand(myHand);
 		checkHand(myHand);
 
