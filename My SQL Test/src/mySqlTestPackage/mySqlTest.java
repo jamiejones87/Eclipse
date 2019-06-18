@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class mySqlTest {
 
 	public static void main(String[] args) {
-		String[] myInput = getUserInput();
-		createConnection(myInput);
+		String[] s = getUserInput();
+		createConnection(s);
 	}
 	
 	public static String[] getUserInput() {
@@ -34,7 +34,7 @@ public class mySqlTest {
 			String connectString = "jdbc:mysql://localhost:3306/" + s[0];
 			@SuppressWarnings("unused")
 			Connection connect = java.sql.DriverManager.getConnection(connectString,s[1],s[2]);
-			System.out.println("SUCCESS!!");
+			System.out.println("You have successfully connected to " + s[0]);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
