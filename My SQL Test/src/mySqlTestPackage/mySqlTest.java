@@ -1,13 +1,16 @@
 package mySqlTestPackage;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class mySqlTest {
 
 	public static void main(String[] args) {
-		String[] s = getUserInput();
+		//String[] s = getUserInput();
+		String[] s = { "test_schema", "root", "root" };
 		createConnection(s);
 	}
 	
@@ -32,9 +35,16 @@ public class mySqlTest {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String connectString = "jdbc:mysql://localhost:3306/" + s[0];
-			@SuppressWarnings("unused")
 			Connection connect = java.sql.DriverManager.getConnection(connectString,s[1],s[2]);
 			System.out.println("You have successfully connected to " + s[0]);
+			
+			Statement stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT name FROM test_table");
+			while(rs.next()) {
+				System.out.println(rs.getString("name"));
+			}
+			
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
