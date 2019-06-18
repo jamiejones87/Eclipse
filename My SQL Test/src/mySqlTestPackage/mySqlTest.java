@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class mySqlTest {
 
 	public static void main(String[] args) {
-		//String[] s = getUserInput();
-		String[] s = { "test_schema", "root", "root" };
+		//String[] s = { "test_schema", "root", "root" };
+		String[] s = getUserInput();
 		createConnection(s);
 	}
 	
