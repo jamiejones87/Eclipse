@@ -14,6 +14,7 @@ public class mySqlTest {
 		createConnection(s);
 	}
 	
+	// Request user input for table name, username, and password
 	public static String[] getUserInput() {
 		String[] myInput = new String[3];
 		Scanner scn = new Scanner(System.in);
@@ -30,7 +31,7 @@ public class mySqlTest {
 		return myInput;		
 	}
 	
-	
+	// Attempts to connect to the table with the given information
 	public static void createConnection(String[] s) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
